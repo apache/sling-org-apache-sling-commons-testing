@@ -70,4 +70,9 @@ public class MockServiceReference implements ServiceReference {
         return 0;
     }
 
+    @Override
+    public Dictionary<String, Object> getProperties() {
+        return props;
+    }
+
 }
