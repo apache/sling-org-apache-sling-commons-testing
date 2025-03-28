@@ -31,7 +31,7 @@
     <packaging>jar</packaging>
     <version>2.1.3-SNAPSHOT</version>
 
-    <name>Apache Sling Testing Utilities</name>
+    <name>Apache Sling Commons Testing</name>
     <description>
         Tools and utilities for automated testing of Sling modules
     </description>
