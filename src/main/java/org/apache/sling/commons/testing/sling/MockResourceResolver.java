@@ -30,6 +30,8 @@ import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.PersistenceException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @deprecated Please use the Mock Resource Resolver Implementation from testing/resourceresolver-mock instead.
@@ -43,33 +45,40 @@ public class MockResourceResolver implements ResourceResolver {
 
     private Map<String, Collection<Resource>> children = new LinkedHashMap<String, Collection<Resource>>();
 
+    @Deprecated
     public void addResource(Resource resource) {
         this.resources.put(resource.getPath(), resource);
     }
 
+    @Deprecated
     public void addChildren(Resource parent, Collection<Resource> children) {
         this.children.put(parent.getPath(), children);
     }
 
+    @Deprecated
     public Resource resolve(HttpServletRequest request) {
         throw new UnsupportedOperationException("Not implemented");
 
     }
 
+    @Deprecated
     public Resource resolve(String absPath) {
         throw new UnsupportedOperationException("Not implemented");
 
     }
 
+    @Deprecated
     public String map(String resourcePath) {
         return resourcePath;	// a rather simplistic 1:1 map...
 
     }
 
+    @Deprecated
     public Resource getResource(String path) {
         return resources.get(path);
     }
 
+    @Deprecated
     public Resource getResource(Resource base, String path) {
         if (!path.startsWith("/")) {
             path = base.getPath() + "/" + path;
@@ -77,11 +86,13 @@ public class MockResourceResolver implements ResourceResolver {
         return getResource(path);
     }
 
+    @Deprecated
     public String[] getSearchPath() {
         return searchPath.clone();
 
     }
 
+    @Deprecated
     public Iterator<Resource> listChildren(final Resource parent) {
         Collection<Resource> childCollection = children.get(parent.getPath());
         if (childCollection != null) {
@@ -127,22 +138,26 @@ public class MockResourceResolver implements ResourceResolver {
         };
     }
 
+    @Deprecated
     public Iterator<Resource> findResources(String query, String language) {
         throw new UnsupportedOperationException("Not implemented");
 
     }
 
+    @Deprecated
     public Iterator<Map<String, Object>> queryResources(String query,
             String language) {
         throw new UnsupportedOperationException("Not implemented");
 
     }
 
+    @Deprecated
     public <AdapterType> AdapterType adaptTo(Class<AdapterType> type) {
         throw new UnsupportedOperationException("Not implemented");
 
     }
 
+    @Deprecated
     public void setSearchPath(String... searchPath) {
         if (searchPath == null) {
             this.searchPath = new String[0];
@@ -158,73 +173,129 @@ public class MockResourceResolver implements ResourceResolver {
         }
     }
 
+    @Deprecated
     public String map(HttpServletRequest request, String resourcePath) {
 		return request.getContextPath() + resourcePath;
     }
 
+    @Deprecated
     public Resource resolve(HttpServletRequest request, String absPath) {
         throw new UnsupportedOperationException("Not implemented");
     }
 
+    @Deprecated
     public void close() {
         // nothing to do
     }
 
+    @Deprecated
     public String getUserID() {
         return null;
     }
 
+    @Deprecated
     public boolean isLive() {
         return true;
     }
 
+    @Deprecated
     public ResourceResolver clone(Map<String, Object> authenticationInfo)
     throws LoginException {
         return null;
     }
 
+    @Deprecated
     public Object getAttribute(String name) {
         return null;
     }
 
+    @Deprecated
     public Iterator<String> getAttributeNames() {
         return null;
     }
 
+    @Deprecated
     public void commit() throws PersistenceException {
     }
 
+    @Deprecated
     public Resource create(Resource arg0, String arg1, Map<String, Object> arg2)
             throws PersistenceException {
         return null;
     }
 
+    @Deprecated
     public void delete(Resource arg0) throws PersistenceException {
     }
 
+    @Deprecated
     public Iterable<Resource> getChildren(Resource arg0) {
         return null;
     }
 
+    @Deprecated
     public String getParentResourceType(Resource arg0) {
         return null;
     }
 
+    @Deprecated
     public String getParentResourceType(String arg0) {
         return null;
     }
 
+    @Deprecated
     public boolean hasChanges() {
         return false;
     }
 
+    @Deprecated
     public boolean isResourceType(Resource arg0, String arg1) {
         return false;
     }
 
+    @Deprecated
     public void refresh() {
     }
 
+    @Deprecated
     public void revert() {
+    }
+
+    @Deprecated
+    @Override
+    public @Nullable Resource getParent(@NotNull Resource child) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Deprecated
+    @Override
+    public boolean hasChildren(@NotNull Resource resource) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Deprecated
+    @Override
+    public boolean orderBefore(@NotNull Resource parent, @NotNull String name,
+            @Nullable String followingSiblingName)
+            throws UnsupportedOperationException, PersistenceException, IllegalArgumentException {
+        throw new UnsupportedOperationException();
+    }
+
+    @Deprecated
+    @Override
+    public Resource copy(String srcAbsPath, String destAbsPath) throws PersistenceException {
+        throw new UnsupportedOperationException();
+    }
+
+    @Deprecated
+    @Override
+    public Resource move(String srcAbsPath, String destAbsPath) throws PersistenceException {
+        throw new UnsupportedOperationException();
+    }
+
+    @Deprecated
+    @Override
+    public @NotNull Map<String, Object> getPropertyMap() {
+        throw new UnsupportedOperationException();
     }
 }

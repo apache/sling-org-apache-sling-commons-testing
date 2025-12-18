@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.security.Principal;
 import java.util.Collection;
 import java.util.Enumeration;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -50,6 +51,7 @@ import org.apache.sling.api.request.RequestProgressTracker;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.SyntheticResource;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Mock request object. This does not do anything useful, it just returns the
@@ -575,5 +577,10 @@ public class MockSlingHttpServletRequest implements SlingHttpServletRequest {
     public DispatcherType getDispatcherType() {
         // TODO Auto-generated method stub
         return null;
+    }
+
+    @Override
+    public @NotNull List<RequestParameter> getRequestParameterList() {
+        throw new UnsupportedOperationException();
     }
 }
