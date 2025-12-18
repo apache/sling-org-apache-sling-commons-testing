@@ -134,7 +134,7 @@ public class RepositoryUtil {
      * with the node type manager available from the given <code>session</code>.
      * <p>
      * This method is not synchronized. It is up to the calling method to
-     * prevent paralell execution.
+     * prevent parallel execution.
      *
      * @param session The <code>Session</code> providing the node type manager
      *            through which the node type is to be registered.
@@ -224,6 +224,16 @@ public class RepositoryUtil {
 
         public boolean isStandardDescriptor(String key) {
             return wrapped.isStandardDescriptor(key);
+        }
+
+        @Override
+        public Session loginService(String subServiceName, String workspace) throws LoginException, RepositoryException {
+            throw new UnsupportedOperationException();
+        }
+
+        @Override
+        public Session impersonateFromService(String subServiceName, Credentials credentials, String workspaceName) throws LoginException, RepositoryException {
+            throw new UnsupportedOperationException();
         }
 
     }
