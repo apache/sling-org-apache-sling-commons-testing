@@ -74,5 +74,4 @@ public class MockServiceReference implements ServiceReference {
     public Dictionary<String, Object> getProperties() {
         return props;
     }
-
 }

@@ -18,15 +18,15 @@
  */
 package org.apache.sling.commons.testing.jcr;
 
-import java.io.InputStream;
-import java.math.BigDecimal;
-import java.util.Calendar;
-
 import javax.jcr.Binary;
 import javax.jcr.PropertyType;
 import javax.jcr.RepositoryException;
 import javax.jcr.Value;
 import javax.jcr.ValueFormatException;
+
+import java.io.InputStream;
+import java.math.BigDecimal;
+import java.util.Calendar;
 
 public class MockValue implements Value {
 
@@ -39,8 +39,7 @@ public class MockValue implements Value {
     private int propertyType;
     private BigDecimal decimal;
 
-    public MockValue() {
-    }
+    public MockValue() {}
 
     public MockValue(String str) {
         stringValue = str;
@@ -75,29 +74,28 @@ public class MockValue implements Value {
         return propertyType;
     }
 
-
     public void setValue(String stringValue) {
-      this.stringValue = stringValue;
+        this.stringValue = stringValue;
     }
 
     public void setValue(boolean booleanValue) {
-      this.booleanValue = booleanValue;
+        this.booleanValue = booleanValue;
     }
 
     public void setValue(Calendar calendarValue) {
-      this.calendarValue = calendarValue;
+        this.calendarValue = calendarValue;
     }
 
     public void setValue(double doubleValue) {
-      this.doubleValue = doubleValue;
+        this.doubleValue = doubleValue;
     }
 
     public void setValue(long longValue) {
-      this.longValue = longValue;
+        this.longValue = longValue;
     }
 
     public void setValue(InputStream stream) {
-      this.stream = stream;
+        this.stream = stream;
     }
 
     public void setDecimal(BigDecimal value) {

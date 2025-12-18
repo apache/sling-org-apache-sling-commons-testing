@@ -28,34 +28,33 @@ import org.apache.sling.jcr.api.SlingRepository;
 public class RepositoryProvider {
     private static RepositoryProvider INSTANCE;
     private SlingRepository repository;
-    
+
     private static class ShutdownThread extends Thread {
         @Override
         public void run() {
             try {
                 RepositoryUtil.stopRepository();
-            } catch(Exception e) {
+            } catch (Exception e) {
                 System.out.println("Exception in ShutdownThread:" + e);
             }
         }
-        
-    };
-    
-    private RepositoryProvider() {
     }
-    
-    public synchronized static RepositoryProvider instance() {
-        if(INSTANCE == null) {
+    ;
+
+    private RepositoryProvider() {}
+
+    public static synchronized RepositoryProvider instance() {
+        if (INSTANCE == null) {
             INSTANCE = new RepositoryProvider();
         }
         return INSTANCE;
     }
-    
+
     /** Return a SlingRepository. First call initializes it, and a JVM
-    *  shutdown hook is registered to stop it.
-    **/
+     *  shutdown hook is registered to stop it.
+     **/
     public synchronized SlingRepository getRepository() throws RepositoryException {
-        if(repository == null) {
+        if (repository == null) {
             RepositoryUtil.startRepository();
             repository = RepositoryUtil.getRepository();
             Runtime.getRuntime().addShutdownHook(new ShutdownThread());

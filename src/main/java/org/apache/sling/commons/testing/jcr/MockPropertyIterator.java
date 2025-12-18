@@ -18,20 +18,20 @@
  */
 package org.apache.sling.commons.testing.jcr;
 
-import java.util.Iterator;
-
 import javax.jcr.Property;
 import javax.jcr.PropertyIterator;
+
+import java.util.Iterator;
 
 public class MockPropertyIterator implements PropertyIterator {
 
     private final Iterator<Property> iterator;
     int index = 0;
-    
-    public MockPropertyIterator(Iterator <Property> it) {
+
+    public MockPropertyIterator(Iterator<Property> it) {
         iterator = it;
     }
-    
+
     public Property nextProperty() {
         return iterator.next();
     }
@@ -44,8 +44,7 @@ public class MockPropertyIterator implements PropertyIterator {
         return -1;
     }
 
-    public void skip(long skipNum) {
-    }
+    public void skip(long skipNum) {}
 
     public boolean hasNext() {
         return iterator.hasNext();

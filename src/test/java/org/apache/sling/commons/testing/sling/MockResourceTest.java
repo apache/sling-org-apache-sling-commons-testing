@@ -18,43 +18,43 @@
  */
 package org.apache.sling.commons.testing.sling;
 
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ValueMap;
+import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-import org.apache.sling.api.resource.Resource;
-import org.apache.sling.api.resource.ValueMap;
-import org.junit.Test;
-
 public class MockResourceTest {
     public static final String PATH = "/foo/bar";
     public static final String RT = "someResourceType";
-    
-    @Test 
+
+    @Test
     public void basicTest() throws Exception {
         final MockResource r = new MockResource(null, PATH, RT);
         r.addProperty("1", Integer.MAX_VALUE);
         r.addProperty("2", "two");
-        
+
         assertTrue(r instanceof Resource);
         assertEquals(PATH, r.getPath());
         assertEquals(RT, r.getResourceType());
         assertNull(r.getResourceSuperType());
-        
+
         final ValueMap m = r.adaptTo(ValueMap.class);
         assertEquals(Integer.MAX_VALUE, m.get("1"));
         assertEquals("two", m.get("2"));
-        
+
         // changes to r do not affect m
         assertNull(m.get("third"));
         r.getProperties().put("third", "trois");
         assertNull(m.get("third"));
-        
+
         // but we get the new value after adapting again
         assertEquals("trois", r.adaptTo(ValueMap.class).get("third"));
     }
-    
+
     @Test
     public void testNoProperties() throws Exception {
         final MockResource r = new MockResource(null, PATH, RT);

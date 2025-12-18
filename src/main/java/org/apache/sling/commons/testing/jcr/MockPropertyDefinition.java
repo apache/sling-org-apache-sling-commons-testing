@@ -28,8 +28,8 @@ public class MockPropertyDefinition implements PropertyDefinition {
 
     public MockPropertyDefinition(boolean multiple) {
         this.multiple = multiple;
-
     }
+
     public Value[] getDefaultValues() {
         return null;
     }
@@ -76,10 +76,12 @@ public class MockPropertyDefinition implements PropertyDefinition {
         // TODO Auto-generated method stub
         return null;
     }
+
     public boolean isFullTextSearchable() {
         // TODO Auto-generated method stub
         return false;
     }
+
     public boolean isQueryOrderable() {
         // TODO Auto-generated method stub
         return false;

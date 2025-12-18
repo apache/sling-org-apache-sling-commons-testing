@@ -18,13 +18,13 @@
  */
 package org.apache.sling.commons.testing.sling;
 
+import javax.servlet.http.HttpServletRequest;
+
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.PersistenceException;
@@ -58,19 +58,16 @@ public class MockResourceResolver implements ResourceResolver {
     @Deprecated
     public Resource resolve(HttpServletRequest request) {
         throw new UnsupportedOperationException("Not implemented");
-
     }
 
     @Deprecated
     public Resource resolve(String absPath) {
         throw new UnsupportedOperationException("Not implemented");
-
     }
 
     @Deprecated
     public String map(String resourcePath) {
-        return resourcePath;	// a rather simplistic 1:1 map...
-
+        return resourcePath; // a rather simplistic 1:1 map...
     }
 
     @Deprecated
@@ -89,7 +86,6 @@ public class MockResourceResolver implements ResourceResolver {
     @Deprecated
     public String[] getSearchPath() {
         return searchPath.clone();
-
     }
 
     @Deprecated
@@ -128,8 +124,7 @@ public class MockResourceResolver implements ResourceResolver {
                 while (elements.hasNext()) {
                     Resource next = elements.next();
                     String path = next.getPath();
-                    if (path.startsWith(parentPath)
-                        && path.indexOf('/', parentPath.length()) < 0) {
+                    if (path.startsWith(parentPath) && path.indexOf('/', parentPath.length()) < 0) {
                         return next;
                     }
                 }
@@ -141,20 +136,16 @@ public class MockResourceResolver implements ResourceResolver {
     @Deprecated
     public Iterator<Resource> findResources(String query, String language) {
         throw new UnsupportedOperationException("Not implemented");
-
     }
 
     @Deprecated
-    public Iterator<Map<String, Object>> queryResources(String query,
-            String language) {
+    public Iterator<Map<String, Object>> queryResources(String query, String language) {
         throw new UnsupportedOperationException("Not implemented");
-
     }
 
     @Deprecated
     public <AdapterType> AdapterType adaptTo(Class<AdapterType> type) {
         throw new UnsupportedOperationException("Not implemented");
-
     }
 
     @Deprecated
@@ -163,7 +154,7 @@ public class MockResourceResolver implements ResourceResolver {
             this.searchPath = new String[0];
         } else {
             this.searchPath = new String[searchPath.length];
-            for (int i=0; i < searchPath.length; i++) {
+            for (int i = 0; i < searchPath.length; i++) {
                 String entry = searchPath[i];
                 if (!entry.endsWith("/")) {
                     entry = entry.concat("/");
@@ -175,7 +166,7 @@ public class MockResourceResolver implements ResourceResolver {
 
     @Deprecated
     public String map(HttpServletRequest request, String resourcePath) {
-		return request.getContextPath() + resourcePath;
+        return request.getContextPath() + resourcePath;
     }
 
     @Deprecated
@@ -199,8 +190,7 @@ public class MockResourceResolver implements ResourceResolver {
     }
 
     @Deprecated
-    public ResourceResolver clone(Map<String, Object> authenticationInfo)
-    throws LoginException {
+    public ResourceResolver clone(Map<String, Object> authenticationInfo) throws LoginException {
         return null;
     }
 
@@ -215,18 +205,15 @@ public class MockResourceResolver implements ResourceResolver {
     }
 
     @Deprecated
-    public void commit() throws PersistenceException {
-    }
+    public void commit() throws PersistenceException {}
 
     @Deprecated
-    public Resource create(Resource arg0, String arg1, Map<String, Object> arg2)
-            throws PersistenceException {
+    public Resource create(Resource arg0, String arg1, Map<String, Object> arg2) throws PersistenceException {
         return null;
     }
 
     @Deprecated
-    public void delete(Resource arg0) throws PersistenceException {
-    }
+    public void delete(Resource arg0) throws PersistenceException {}
 
     @Deprecated
     public Iterable<Resource> getChildren(Resource arg0) {
@@ -254,12 +241,10 @@ public class MockResourceResolver implements ResourceResolver {
     }
 
     @Deprecated
-    public void refresh() {
-    }
+    public void refresh() {}
 
     @Deprecated
-    public void revert() {
-    }
+    public void revert() {}
 
     @Deprecated
     @Override
@@ -275,8 +260,7 @@ public class MockResourceResolver implements ResourceResolver {
 
     @Deprecated
     @Override
-    public boolean orderBefore(@NotNull Resource parent, @NotNull String name,
-            @Nullable String followingSiblingName)
+    public boolean orderBefore(@NotNull Resource parent, @NotNull String name, @Nullable String followingSiblingName)
             throws UnsupportedOperationException, PersistenceException, IllegalArgumentException {
         throw new UnsupportedOperationException();
     }

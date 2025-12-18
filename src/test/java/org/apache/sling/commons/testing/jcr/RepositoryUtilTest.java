@@ -18,9 +18,9 @@
  */
 package org.apache.sling.commons.testing.jcr;
 
-import static org.junit.Assert.assertNotNull;
-
 import javax.jcr.Session;
+
+import static org.junit.Assert.assertNotNull;
 
 /**
  * This is a simple test for the repository util. We start
@@ -29,7 +29,8 @@ import javax.jcr.Session;
  */
 public class RepositoryUtilTest {
 
-    @org.junit.Test public void testRepository() throws Exception {
+    @org.junit.Test
+    public void testRepository() throws Exception {
         // start the repository
         RepositoryUtil.startRepository();
 

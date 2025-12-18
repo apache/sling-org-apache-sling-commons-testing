@@ -20,18 +20,18 @@ package org.apache.sling.commons.testing.util;
 
 /** String utilities for testing */
 public class TestStringUtil {
-    static private final String NATIVE_LINE_SEP = System.getProperty("line.separator");
+    private static final String NATIVE_LINE_SEP = System.getProperty("line.separator");
 
     /** Replace \n with . in strings to make it easier to compare visually for testing */
     public static String flatten(String str) {
 
         // First replace native line-endings
-        if(str.indexOf(NATIVE_LINE_SEP) >= 0) {
+        if (str.indexOf(NATIVE_LINE_SEP) >= 0) {
             str = str.replace(NATIVE_LINE_SEP, ".");
         }
 
         // Now find non-native line-endings, e.g. cygwin needs this
-        if(str.indexOf('\n') >= 0) {
+        if (str.indexOf('\n') >= 0) {
             str = str.replace('\n', '.');
         }
 

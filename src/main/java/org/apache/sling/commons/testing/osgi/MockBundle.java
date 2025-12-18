@@ -45,8 +45,7 @@ public class MockBundle implements Bundle {
     }
 
     @Override
-    public Enumeration<URL> findEntries(String path, String filePattern,
-            boolean recurse) {
+    public Enumeration<URL> findEntries(String path, String filePattern, boolean recurse) {
         return null;
     }
 
@@ -121,29 +120,19 @@ public class MockBundle implements Bundle {
     }
 
     @Override
-    public void start() {
-
-    }
+    public void start() {}
 
     @Override
-    public void stop() {
-
-    }
+    public void stop() {}
 
     @Override
-    public void uninstall() {
-
-    }
+    public void uninstall() {}
 
     @Override
-    public void update() {
-
-    }
+    public void update() {}
 
     @Override
-    public void update(InputStream in) {
-
-    }
+    public void update(InputStream in) {}
 
     @Override
     public BundleContext getBundleContext() {
@@ -151,12 +140,10 @@ public class MockBundle implements Bundle {
     }
 
     @Override
-    public void start(int options) throws BundleException {
-    }
+    public void start(int options) throws BundleException {}
 
     @Override
-    public void stop(int options) throws BundleException {
-    }
+    public void stop(int options) throws BundleException {}
 
     @Override
     public Map getSignerCertificates(int signersType) {

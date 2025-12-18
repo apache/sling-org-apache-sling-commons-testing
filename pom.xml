@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
     Licensed to the Apache Software Foundation (ASF) under one
     or more contributor license agreements.  See the NOTICE file
@@ -28,25 +28,23 @@
     </parent>
 
     <artifactId>org.apache.sling.commons.testing</artifactId>
-    <packaging>jar</packaging>
     <version>2.2.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
     <name>Apache Sling Commons Testing</name>
-    <description>
-        Tools and utilities for automated testing of Sling modules
-    </description>
+    <description>Tools and utilities for automated testing of Sling modules</description>
+
+    <scm>
+        <connection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-commons-testing.git</connection>
+        <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-commons-testing.git</developerConnection>
+        <tag>HEAD</tag>
+        <url>https://github.com/apache/sling-org-apache-sling-commons-testing.git</url>
+    </scm>
 
     <properties>
         <sling.java.version>11</sling.java.version>
         <project.build.outputTimestamp>1743171324</project.build.outputTimestamp>
     </properties>
-
-    <scm>
-        <connection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-commons-testing.git</connection>
-        <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-commons-testing.git</developerConnection>
-        <url>https://github.com/apache/sling-org-apache-sling-commons-testing.git</url>
-        <tag>HEAD</tag>
-    </scm>
 
     <dependencies>
         <dependency>
@@ -148,21 +146,21 @@
             <version>2.0.0</version>
             <scope>compile</scope>
         </dependency>
-        
+
         <!-- Logging for tests -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <scope>test</scope>
         </dependency>
-        
+
         <!-- Basic Test Controller JUnit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>provided</scope>
         </dependency>
-        
+
         <!-- Provide for Test Mocks -->
         <dependency>
             <groupId>org.jmock</groupId>
