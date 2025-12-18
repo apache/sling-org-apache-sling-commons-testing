@@ -26,28 +26,21 @@ import org.apache.sling.api.request.RequestProgressTracker;
 
 public class MockRequestProgressTracker implements RequestProgressTracker {
 
-    public void dump(PrintWriter writer) {
-    }
+    public void dump(PrintWriter writer) {}
 
     public Iterator<String> getMessages() {
-        return Collections.<String> emptyList().iterator();
+        return Collections.<String>emptyList().iterator();
     }
 
-    public void log(String message) {
-    }
+    public void log(String message) {}
 
-    public void log(String format, Object... args) {
-    }
+    public void log(String format, Object... args) {}
 
-    public void logTimer(String timerName) {
-    }
+    public void logTimer(String timerName) {}
 
-    public void logTimer(String timerName, String format, Object... args) {
-    }
+    public void logTimer(String timerName, String format, Object... args) {}
 
-    public void startTimer(String timerName) {
-    }
+    public void startTimer(String timerName) {}
 
-    public void done() {
-    }
+    public void done() {}
 }

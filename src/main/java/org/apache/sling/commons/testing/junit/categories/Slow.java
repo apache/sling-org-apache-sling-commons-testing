@@ -20,5 +20,4 @@ package org.apache.sling.commons.testing.junit.categories;
 
 /** JUnit Category for tests that are considered slow and
  * are thus only run when explicitly enabled (by default off) */
-public interface Slow {
-}
+public interface Slow {}

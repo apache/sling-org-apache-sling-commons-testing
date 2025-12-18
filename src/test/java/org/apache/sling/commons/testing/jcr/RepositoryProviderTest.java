@@ -18,29 +18,29 @@
  */
 package org.apache.sling.commons.testing.jcr;
 
-import static org.junit.Assert.assertNotNull;
-
 import javax.jcr.Session;
 
 import org.apache.sling.jcr.api.SlingRepository;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertNotNull;
+
 /** JUnit 4 style RepositoryProvider test */
 public class RepositoryProviderTest {
     private SlingRepository repo;
-    
+
     @Before
     public void getRepo() throws Exception {
         repo = RepositoryProvider.instance().getRepository();
     }
-    
-    @Test 
+
+    @Test
     public void testRepository() throws Exception {
         assertNotNull("Expecting SlingRepository to be setup", repo);
     }
-    
-    @Test 
+
+    @Test
     public void testRootNode() throws Exception {
         final Session s = repo.loginAdministrative(null);
         try {

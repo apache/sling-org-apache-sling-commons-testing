@@ -24,20 +24,17 @@ import java.io.IOException;
 public class HttpStatusCodeException extends IOException {
 
     private final int expectedStatus;
-    
+
     private final int actualStatus;
-    
-    public HttpStatusCodeException(int expectedStatus, int actualStatus,
-            String method, String url) {
+
+    public HttpStatusCodeException(int expectedStatus, int actualStatus, String method, String url) {
         this(expectedStatus, actualStatus, method, url, null);
     }
 
-    public HttpStatusCodeException(int expectedStatus, int actualStatus,
-            String method, String url, String content) {
+    public HttpStatusCodeException(int expectedStatus, int actualStatus, String method, String url, String content) {
         super("Expected status code " + expectedStatus + " for " + method
-                + ", got " + actualStatus + ", URL=" + url 
-                + (content != null ? ", Content=[" + content + "]" : "")
-                );
+                + ", got " + actualStatus + ", URL=" + url
+                + (content != null ? ", Content=[" + content + "]" : ""));
         this.expectedStatus = expectedStatus;
         this.actualStatus = actualStatus;
     }
@@ -45,7 +42,7 @@ public class HttpStatusCodeException extends IOException {
     public int getExpectedStatus() {
         return expectedStatus;
     }
-    
+
     public int getActualStatus() {
         return actualStatus;
     }

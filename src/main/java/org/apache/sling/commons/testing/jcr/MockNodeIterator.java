@@ -18,21 +18,21 @@
  */
 package org.apache.sling.commons.testing.jcr;
 
-import java.util.NoSuchElementException;
-
 import javax.jcr.Node;
 import javax.jcr.NodeIterator;
+
+import java.util.NoSuchElementException;
 
 public class MockNodeIterator implements NodeIterator {
 
     private Node[] nodes;
     private int idx;
-    private static final Node [] EMPTY_NODE_ARRAY = {};
+    private static final Node[] EMPTY_NODE_ARRAY = {};
 
     public MockNodeIterator() {
         this(EMPTY_NODE_ARRAY);
     }
-    
+
     public MockNodeIterator(Node[] nodes) {
         this.nodes = (nodes != null) ? nodes : new Node[0];
         this.idx = 0;
@@ -47,7 +47,7 @@ public class MockNodeIterator implements NodeIterator {
     }
 
     public long getPosition() {
-        return idx-1;
+        return idx - 1;
     }
 
     public long getSize() {
@@ -69,5 +69,4 @@ public class MockNodeIterator implements NodeIterator {
     public void remove() {
         throw new UnsupportedOperationException();
     }
-
 }

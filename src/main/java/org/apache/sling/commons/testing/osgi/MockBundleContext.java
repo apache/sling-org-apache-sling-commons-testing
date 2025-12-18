@@ -46,138 +46,111 @@ public class MockBundleContext implements BundleContext {
     @Override
     public String getProperty(String s) {
         throw new UnsupportedOperationException("Not implemented");
-
     }
 
     @Override
     public Bundle getBundle() {
         return bundle;
-
     }
 
     @Override
     public Bundle installBundle(String s) throws BundleException {
         throw new UnsupportedOperationException("Not implemented");
-
     }
 
     @Override
-    public Bundle installBundle(String s, InputStream inputStream)
-            throws BundleException {
+    public Bundle installBundle(String s, InputStream inputStream) throws BundleException {
         throw new UnsupportedOperationException("Not implemented");
-
     }
 
     @Override
     public Bundle getBundle(long l) {
         throw new UnsupportedOperationException("Not implemented");
-
     }
 
     @Override
     public Bundle[] getBundles() {
         throw new UnsupportedOperationException("Not implemented");
-
     }
 
     @Override
-    public void addServiceListener(ServiceListener serviceListener, String s)
-            throws InvalidSyntaxException {
+    public void addServiceListener(ServiceListener serviceListener, String s) throws InvalidSyntaxException {
         throw new UnsupportedOperationException("Not implemented");
-
     }
 
     @Override
     public void addServiceListener(ServiceListener serviceListener) {
         throw new UnsupportedOperationException("Not implemented");
-
     }
 
     @Override
     public void removeServiceListener(ServiceListener serviceListener) {
         throw new UnsupportedOperationException("Not implemented");
-
     }
 
     @Override
     public void addBundleListener(BundleListener bundleListener) {
         throw new UnsupportedOperationException("Not implemented");
-
     }
 
     @Override
     public void removeBundleListener(BundleListener bundleListener) {
         throw new UnsupportedOperationException("Not implemented");
-
     }
 
     @Override
     public void addFrameworkListener(FrameworkListener frameworkListener) {
         throw new UnsupportedOperationException("Not implemented");
-
     }
 
     @Override
     public void removeFrameworkListener(FrameworkListener frameworkListener) {
         throw new UnsupportedOperationException("Not implemented");
-
     }
 
     @Override
-    public ServiceRegistration registerService(String[] strings, Object o,
-            Dictionary dictionary) {
+    public ServiceRegistration registerService(String[] strings, Object o, Dictionary dictionary) {
         throw new UnsupportedOperationException("Not implemented");
-
     }
 
     @Override
-    public ServiceRegistration registerService(String s, Object o,
-            Dictionary dictionary) {
+    public ServiceRegistration registerService(String s, Object o, Dictionary dictionary) {
         return new MockServiceRegistration();
     }
 
     @Override
-    public ServiceReference[] getServiceReferences(String s, String s1)
-            throws InvalidSyntaxException {
+    public ServiceReference[] getServiceReferences(String s, String s1) throws InvalidSyntaxException {
         throw new UnsupportedOperationException("Not implemented");
-
     }
 
     @Override
-    public ServiceReference[] getAllServiceReferences(String s, String s1)
-            throws InvalidSyntaxException {
+    public ServiceReference[] getAllServiceReferences(String s, String s1) throws InvalidSyntaxException {
         throw new UnsupportedOperationException("Not implemented");
-
     }
 
     @Override
     public ServiceReference getServiceReference(String s) {
         throw new UnsupportedOperationException("Not implemented");
-
     }
 
     @Override
     public Object getService(ServiceReference serviceReference) {
         throw new UnsupportedOperationException("Not implemented");
-
     }
 
     @Override
     public boolean ungetService(ServiceReference serviceReference) {
         throw new UnsupportedOperationException("Not implemented");
-
     }
 
     @Override
     public File getDataFile(String s) {
         throw new UnsupportedOperationException("Not implemented");
-
     }
 
     @Override
     public Filter createFilter(String s) throws InvalidSyntaxException {
         throw new UnsupportedOperationException("Not implemented");
-
     }
 
     @Override
@@ -187,8 +160,8 @@ public class MockBundleContext implements BundleContext {
     }
 
     @Override
-    public <S> ServiceRegistration<S> registerService(Class<S> clazz, ServiceFactory<S> factory,
-            Dictionary<String, ?> properties) {
+    public <S> ServiceRegistration<S> registerService(
+            Class<S> clazz, ServiceFactory<S> factory, Dictionary<String, ?> properties) {
         // TODO Auto-generated method stub
         return null;
     }

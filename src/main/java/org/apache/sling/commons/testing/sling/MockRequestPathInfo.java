@@ -33,18 +33,18 @@ class MockRequestPathInfo implements RequestPathInfo {
 
     private final String suffix;
 
-	private final String path;
+    private final String path;
 
-	public MockRequestPathInfo(String selectors, String extension, String suffix) {
-		this(selectors, extension, suffix, null);
-	}
+    public MockRequestPathInfo(String selectors, String extension, String suffix) {
+        this(selectors, extension, suffix, null);
+    }
 
-	public MockRequestPathInfo(String selectors, String extension, String suffix, String path) {
-		this.selectors = selectors;
-		this.extension = extension;
-		this.suffix = suffix;
-		this.path = path;
-	}
+    public MockRequestPathInfo(String selectors, String extension, String suffix, String path) {
+        this.selectors = selectors;
+        this.extension = extension;
+        this.suffix = suffix;
+        this.path = path;
+    }
 
     public String getExtension() {
         return extension;
@@ -59,9 +59,7 @@ class MockRequestPathInfo implements RequestPathInfo {
     }
 
     public String[] getSelectors() {
-        return (getSelectorString() != null)
-                ? getSelectorString().split("\\.")
-                : new String[0];
+        return (getSelectorString() != null) ? getSelectorString().split("\\.") : new String[0];
     }
 
     public String getSuffix() {

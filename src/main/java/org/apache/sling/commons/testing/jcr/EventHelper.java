@@ -29,28 +29,29 @@ import javax.jcr.observation.EventListener;
  * 	have been delivered.
  */
 public class EventHelper implements EventListener {
-	private final Session session;
-	private int eventCount;
-	public static final String WAIT_NODE_FOLDER = "WAIT_NODE";
-	public static final String WAIT_NODE_NODE = EventHelper.class.getSimpleName();
-	private final Node waitNodeFolder;
+    private final Session session;
+    private int eventCount;
+    public static final String WAIT_NODE_FOLDER = "WAIT_NODE";
+    public static final String WAIT_NODE_NODE = EventHelper.class.getSimpleName();
+    private final Node waitNodeFolder;
 
-	public EventHelper(Session s) throws RepositoryException {
-		session = s;
+    public EventHelper(Session s) throws RepositoryException {
+        session = s;
 
         final int eventTypes = Event.NODE_ADDED | Event.NODE_REMOVED;
         final boolean isDeep = true;
         final boolean noLocal = false;
-        session.getWorkspace().getObservationManager().addEventListener(
-        		this, eventTypes, "/" + WAIT_NODE_FOLDER, isDeep, null, null, noLocal);
+        session.getWorkspace()
+                .getObservationManager()
+                .addEventListener(this, eventTypes, "/" + WAIT_NODE_FOLDER, isDeep, null, null, noLocal);
 
-        if(session.getRootNode().hasNode(WAIT_NODE_FOLDER)) {
-        	waitNodeFolder = session.getRootNode().getNode(WAIT_NODE_FOLDER);
+        if (session.getRootNode().hasNode(WAIT_NODE_FOLDER)) {
+            waitNodeFolder = session.getRootNode().getNode(WAIT_NODE_FOLDER);
         } else {
-        	waitNodeFolder = session.getRootNode().addNode(WAIT_NODE_FOLDER, "nt:unstructured");
+            waitNodeFolder = session.getRootNode().addNode(WAIT_NODE_FOLDER, "nt:unstructured");
         }
         session.save();
-	}
+    }
 
     public void onEvent(EventIterator it) {
         eventCount++;
@@ -60,27 +61,28 @@ public class EventHelper implements EventListener {
      * 	create or delete a a node and wait for the corresponding
      * 	events to be received.
      */
-	public void waitForEvents(long timeoutMsec) throws RepositoryException {
-		final int targetEventCount = eventCount + 1;
+    public void waitForEvents(long timeoutMsec) throws RepositoryException {
+        final int targetEventCount = eventCount + 1;
 
-		if(waitNodeFolder.hasNode(WAIT_NODE_NODE)) {
-			waitNodeFolder.getNode(WAIT_NODE_NODE).remove();
-		} else {
-			waitNodeFolder.addNode(WAIT_NODE_NODE);
-		}
-		session.save();
+        if (waitNodeFolder.hasNode(WAIT_NODE_NODE)) {
+            waitNodeFolder.getNode(WAIT_NODE_NODE).remove();
+        } else {
+            waitNodeFolder.addNode(WAIT_NODE_NODE);
+        }
+        session.save();
 
-    	final long end = System.currentTimeMillis() + timeoutMsec;
-    	while(eventCount < targetEventCount && System.currentTimeMillis() < end) {
-    		try {
-    			Thread.sleep(100);
-    		} catch(InterruptedException ignored) {
-    		}
-    	}
+        final long end = System.currentTimeMillis() + timeoutMsec;
+        while (eventCount < targetEventCount && System.currentTimeMillis() < end) {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException ignored) {
+            }
+        }
 
-    	if(eventCount < targetEventCount) {
-    		throw new IllegalStateException("Event counter did not reach " + targetEventCount + ", waited " + timeoutMsec + " msec");
-    	}
+        if (eventCount < targetEventCount) {
+            throw new IllegalStateException(
+                    "Event counter did not reach " + targetEventCount + ", waited " + timeoutMsec + " msec");
+        }
     }
 
     /**

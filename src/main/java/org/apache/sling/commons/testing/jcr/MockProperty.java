@@ -18,10 +18,6 @@
  */
 package org.apache.sling.commons.testing.jcr;
 
-import java.io.InputStream;
-import java.math.BigDecimal;
-import java.util.Calendar;
-
 import javax.jcr.AccessDeniedException;
 import javax.jcr.Binary;
 import javax.jcr.InvalidItemStateException;
@@ -43,9 +39,13 @@ import javax.jcr.nodetype.NoSuchNodeTypeException;
 import javax.jcr.nodetype.PropertyDefinition;
 import javax.jcr.version.VersionException;
 
+import java.io.InputStream;
+import java.math.BigDecimal;
+import java.util.Calendar;
+
 public class MockProperty implements Property {
 
-    private Value [] values = {};
+    private Value[] values = {};
     private final String name;
 
     public MockProperty(String name) {
@@ -104,7 +104,7 @@ public class MockProperty implements Property {
     }
 
     public String getString() throws ValueFormatException, RepositoryException {
-        if(values.length > 0) return values[0].getString();
+        if (values.length > 0) return values[0].getString();
         return null;
     }
 
@@ -123,78 +123,86 @@ public class MockProperty implements Property {
         return values;
     }
 
-    public void setValue(boolean value) throws ValueFormatException, VersionException, LockException,
-            ConstraintViolationException, RepositoryException {
-      MockValue val = new MockValue();
-      val.setValue(value);
-      values = new MockValue[1];
-      values[0] = val;
+    public void setValue(boolean value)
+            throws ValueFormatException, VersionException, LockException, ConstraintViolationException,
+                    RepositoryException {
+        MockValue val = new MockValue();
+        val.setValue(value);
+        values = new MockValue[1];
+        values[0] = val;
     }
 
-    public void setValue(Calendar value) throws ValueFormatException, VersionException, LockException,
-            ConstraintViolationException, RepositoryException {
-      MockValue val = new MockValue();
-      val.setValue(value);
-      values = new MockValue[1];
-      values[0] = val;
+    public void setValue(Calendar value)
+            throws ValueFormatException, VersionException, LockException, ConstraintViolationException,
+                    RepositoryException {
+        MockValue val = new MockValue();
+        val.setValue(value);
+        values = new MockValue[1];
+        values[0] = val;
     }
 
-    public void setValue(double value) throws ValueFormatException, VersionException, LockException,
-            ConstraintViolationException, RepositoryException {
-      MockValue val = new MockValue();
-      val.setValue(value);
-      values = new MockValue[1];
-      values[0] = val;
+    public void setValue(double value)
+            throws ValueFormatException, VersionException, LockException, ConstraintViolationException,
+                    RepositoryException {
+        MockValue val = new MockValue();
+        val.setValue(value);
+        values = new MockValue[1];
+        values[0] = val;
     }
 
-    public void setValue(InputStream value) throws ValueFormatException, VersionException, LockException,
-            ConstraintViolationException, RepositoryException {
-      MockValue val = new MockValue();
-      val.setValue(value);
-      values = new MockValue[1];
-      values[0] = val;
+    public void setValue(InputStream value)
+            throws ValueFormatException, VersionException, LockException, ConstraintViolationException,
+                    RepositoryException {
+        MockValue val = new MockValue();
+        val.setValue(value);
+        values = new MockValue[1];
+        values[0] = val;
     }
 
-    public void setValue(long value) throws ValueFormatException, VersionException, LockException,
-            ConstraintViolationException, RepositoryException {
-      MockValue val = new MockValue();
-      val.setValue(value);
-      values = new MockValue[1];
-      values[0] = val;
+    public void setValue(long value)
+            throws ValueFormatException, VersionException, LockException, ConstraintViolationException,
+                    RepositoryException {
+        MockValue val = new MockValue();
+        val.setValue(value);
+        values = new MockValue[1];
+        values[0] = val;
     }
 
-    public void setValue(Node value) throws ValueFormatException, VersionException, LockException,
-            ConstraintViolationException, RepositoryException {
-    }
+    public void setValue(Node value)
+            throws ValueFormatException, VersionException, LockException, ConstraintViolationException,
+                    RepositoryException {}
 
-    public void setValue(String value) throws ValueFormatException, VersionException, LockException,
-            ConstraintViolationException, RepositoryException {
-        values =new MockValue[1];
+    public void setValue(String value)
+            throws ValueFormatException, VersionException, LockException, ConstraintViolationException,
+                    RepositoryException {
+        values = new MockValue[1];
         values[0] = new MockValue(value);
     }
 
-    public void setValue(String[] inputValues) throws ValueFormatException, VersionException, LockException,
-            ConstraintViolationException, RepositoryException {
+    public void setValue(String[] inputValues)
+            throws ValueFormatException, VersionException, LockException, ConstraintViolationException,
+                    RepositoryException {
         this.values = new MockValue[inputValues.length];
         int i = 0;
-        for(String str : inputValues) {
+        for (String str : inputValues) {
             values[i++] = new MockValue(str);
         }
     }
 
-    public void setValue(Value value) throws ValueFormatException, VersionException, LockException,
-            ConstraintViolationException, RepositoryException {
-      values = new Value[1];
-      values[0] = value;
+    public void setValue(Value value)
+            throws ValueFormatException, VersionException, LockException, ConstraintViolationException,
+                    RepositoryException {
+        values = new Value[1];
+        values[0] = value;
     }
 
-    public void setValue(Value[] values) throws ValueFormatException, VersionException, LockException,
-            ConstraintViolationException, RepositoryException {
-      this.values = values;
+    public void setValue(Value[] values)
+            throws ValueFormatException, VersionException, LockException, ConstraintViolationException,
+                    RepositoryException {
+        this.values = values;
     }
 
-    public void accept(ItemVisitor visitor) throws RepositoryException {
-    }
+    public void accept(ItemVisitor visitor) throws RepositoryException {}
 
     public Item getAncestor(int depth) throws ItemNotFoundException, AccessDeniedException, RepositoryException {
         return null;
@@ -236,16 +244,14 @@ public class MockProperty implements Property {
         return false;
     }
 
-    public void refresh(boolean keepChanges) throws InvalidItemStateException, RepositoryException {
-    }
+    public void refresh(boolean keepChanges) throws InvalidItemStateException, RepositoryException {}
 
-    public void remove() throws VersionException, LockException, ConstraintViolationException, RepositoryException {
-    }
+    public void remove() throws VersionException, LockException, ConstraintViolationException, RepositoryException {}
 
-    public void save() throws AccessDeniedException, ItemExistsException, ConstraintViolationException,
-            InvalidItemStateException, ReferentialIntegrityException, VersionException, LockException,
-            NoSuchNodeTypeException, RepositoryException {
-    }
+    public void save()
+            throws AccessDeniedException, ItemExistsException, ConstraintViolationException, InvalidItemStateException,
+                    ReferentialIntegrityException, VersionException, LockException, NoSuchNodeTypeException,
+                    RepositoryException {}
 
     // JCR 2.0 methods
 
@@ -254,14 +260,12 @@ public class MockProperty implements Property {
         return null;
     }
 
-    public BigDecimal getDecimal() throws ValueFormatException,
-            RepositoryException {
+    public BigDecimal getDecimal() throws ValueFormatException, RepositoryException {
         // TODO Auto-generated method stub
         return null;
     }
 
-    public Property getProperty() throws ItemNotFoundException,
-            ValueFormatException, RepositoryException {
+    public Property getProperty() throws ItemNotFoundException, ValueFormatException, RepositoryException {
         // TODO Auto-generated method stub
         return null;
     }
@@ -270,16 +274,16 @@ public class MockProperty implements Property {
         return values.length > 1;
     }
 
-    public void setValue(BigDecimal value) throws ValueFormatException,
-            VersionException, LockException, ConstraintViolationException,
-            RepositoryException {
+    public void setValue(BigDecimal value)
+            throws ValueFormatException, VersionException, LockException, ConstraintViolationException,
+                    RepositoryException {
         // TODO Auto-generated method stub
 
     }
 
-    public void setValue(Binary value) throws ValueFormatException,
-            VersionException, LockException, ConstraintViolationException,
-            RepositoryException {
+    public void setValue(Binary value)
+            throws ValueFormatException, VersionException, LockException, ConstraintViolationException,
+                    RepositoryException {
         // TODO Auto-generated method stub
 
     }

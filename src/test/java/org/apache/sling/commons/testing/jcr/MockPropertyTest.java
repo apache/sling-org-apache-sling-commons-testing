@@ -42,5 +42,4 @@ public class MockPropertyTest {
         assertTrue(prop.isMultiple());
         assertTrue(prop.getDefinition().isMultiple());
     }
-
 }

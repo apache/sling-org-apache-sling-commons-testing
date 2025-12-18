@@ -1,26 +1,22 @@
 /*
- * Licensed to the Apache Software Foundation (ASF) under one or more
- * contributor license agreements.  See the NOTICE file distributed with
- * this work for additional information regarding copyright ownership.
- * The ASF licenses this file to You under the Apache License, Version 2.0
- * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *   http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
  */
 package org.apache.sling.commons.testing.jcr;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 
 import javax.jcr.Credentials;
 import javax.jcr.LoginException;
@@ -31,6 +27,12 @@ import javax.jcr.Session;
 import javax.jcr.SimpleCredentials;
 import javax.jcr.Value;
 import javax.naming.NamingException;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import org.apache.jackrabbit.commons.JcrUtils;
 import org.apache.jackrabbit.commons.cnd.CndImporter;
@@ -61,10 +63,9 @@ public class RepositoryUtil {
      *             repository.
      */
     public static void startRepository() throws RepositoryException {
-        if ( adminSession == null ) {
+        if (adminSession == null) {
             // copy the repository configuration file to the repository HOME_DIR
-            InputStream ins = RepositoryUtil.class.getClassLoader().getResourceAsStream(
-                CONFIG_FILE);
+            InputStream ins = RepositoryUtil.class.getClassLoader().getResourceAsStream(CONFIG_FILE);
             if (ins == null) {
                 throw new RepositoryException("Cannot get " + CONFIG_FILE);
             }
@@ -81,8 +82,7 @@ public class RepositoryUtil {
                     out.write(buf, 0, rd);
                 }
             } catch (IOException ioe) {
-                throw new RepositoryException("Cannot copy configuration file to "
-                    + configFile);
+                throw new RepositoryException("Cannot copy configuration file to " + configFile);
             } finally {
                 try {
                     ins.close();
@@ -113,7 +113,7 @@ public class RepositoryUtil {
      * Stop a repository.
      */
     public static void stopRepository() throws NamingException {
-        if ( adminSession != null ) {
+        if (adminSession != null) {
             adminSession.logout();
             adminSession = null;
             repository = null;
@@ -155,12 +155,9 @@ public class RepositoryUtil {
 
     public static void registerSlingNodeTypes(Session adminSession) throws IOException, RepositoryException {
         final Class<RepositoryUtil> clazz = RepositoryUtil.class;
-        registerNodeType(adminSession,
-                clazz.getResourceAsStream("/SLING-INF/nodetypes/folder.cnd"));
-        RepositoryUtil.registerNodeType(adminSession,
-                clazz.getResourceAsStream("/SLING-INF/nodetypes/resource.cnd"));
-        RepositoryUtil.registerNodeType(adminSession,
-                clazz.getResourceAsStream("/SLING-INF/nodetypes/vanitypath.cnd"));
+        registerNodeType(adminSession, clazz.getResourceAsStream("/SLING-INF/nodetypes/folder.cnd"));
+        RepositoryUtil.registerNodeType(adminSession, clazz.getResourceAsStream("/SLING-INF/nodetypes/resource.cnd"));
+        RepositoryUtil.registerNodeType(adminSession, clazz.getResourceAsStream("/SLING-INF/nodetypes/vanitypath.cnd"));
     }
 
     public static final class RepositoryWrapper implements SlingRepository {
@@ -184,18 +181,16 @@ public class RepositoryUtil {
         }
 
         public Session login(Credentials credentials, String workspaceName)
-                throws LoginException, NoSuchWorkspaceException,
-                RepositoryException {
+                throws LoginException, NoSuchWorkspaceException, RepositoryException {
             return wrapped.login(credentials, (workspaceName == null ? getDefaultWorkspace() : workspaceName));
         }
 
-        public Session login(Credentials credentials) throws LoginException,
-                RepositoryException {
+        public Session login(Credentials credentials) throws LoginException, RepositoryException {
             return wrapped.login(credentials);
         }
 
-        public Session login(String workspaceName) throws LoginException,
-                NoSuchWorkspaceException, RepositoryException {
+        public Session login(String workspaceName)
+                throws LoginException, NoSuchWorkspaceException, RepositoryException {
             return wrapped.login((workspaceName == null ? getDefaultWorkspace() : workspaceName));
         }
 
@@ -203,10 +198,8 @@ public class RepositoryUtil {
             return "default";
         }
 
-        public Session loginAdministrative(String workspaceName)
-                throws RepositoryException {
-            final Credentials credentials = new SimpleCredentials(ADMIN_NAME,
-                ADMIN_PASSWORD.toCharArray());
+        public Session loginAdministrative(String workspaceName) throws RepositoryException {
+            final Credentials credentials = new SimpleCredentials(ADMIN_NAME, ADMIN_PASSWORD.toCharArray());
             return this.login(credentials, (workspaceName == null ? getDefaultWorkspace() : workspaceName));
         }
 
@@ -227,14 +220,15 @@ public class RepositoryUtil {
         }
 
         @Override
-        public Session loginService(String subServiceName, String workspace) throws LoginException, RepositoryException {
+        public Session loginService(String subServiceName, String workspace)
+                throws LoginException, RepositoryException {
             throw new UnsupportedOperationException();
         }
 
         @Override
-        public Session impersonateFromService(String subServiceName, Credentials credentials, String workspaceName) throws LoginException, RepositoryException {
+        public Session impersonateFromService(String subServiceName, Credentials credentials, String workspaceName)
+                throws LoginException, RepositoryException {
             throw new UnsupportedOperationException();
         }
-
     }
 }

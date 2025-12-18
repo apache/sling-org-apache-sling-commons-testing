@@ -16,7 +16,6 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
 package org.apache.sling.commons.testing.integration;
 
 import java.io.IOException;
@@ -33,12 +32,11 @@ import org.slf4j.MDC;
  * of outgoing HTTP request
  */
 public class TestInfoPassingClient extends HttpClient {
-    //Defined in org.apache.sling.testing.tools.junit.TestLogRule
+    // Defined in org.apache.sling.testing.tools.junit.TestLogRule
     private static final String SLING_HEADER_PREFIX = "X-Sling-";
 
     @Override
-    public int executeMethod(HostConfiguration hostconfig, HttpMethod method,
-                             HttpState state) throws IOException {
+    public int executeMethod(HostConfiguration hostconfig, HttpMethod method, HttpState state) throws IOException {
         addSlingHeaders(method);
         return super.executeMethod(hostconfig, method, state);
     }
@@ -47,13 +45,13 @@ public class TestInfoPassingClient extends HttpClient {
      * Adds all MDC key-value pairs as HTTP header where the key starts
      * with 'X-Sling-'
      */
-    private static void addSlingHeaders(HttpMethod m){
-        Map<?,?> mdc = MDC.getCopyOfContextMap();
+    private static void addSlingHeaders(HttpMethod m) {
+        Map<?, ?> mdc = MDC.getCopyOfContextMap();
         if (mdc != null) {
             for (Map.Entry<?, ?> e : mdc.entrySet()) {
                 Object key = e.getKey();
                 if (key instanceof String
-                        && ((String)key).startsWith(SLING_HEADER_PREFIX)
+                        && ((String) key).startsWith(SLING_HEADER_PREFIX)
                         && e.getValue() instanceof String) {
                     m.addRequestHeader((String) key, (String) e.getValue());
                 }

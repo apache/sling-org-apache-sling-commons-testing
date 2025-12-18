@@ -18,16 +18,6 @@
  */
 package org.apache.sling.commons.testing.sling;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.security.Principal;
-import java.util.Collection;
-import java.util.Enumeration;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.ResourceBundle;
-
 import javax.servlet.AsyncContext;
 import javax.servlet.DispatcherType;
 import javax.servlet.RequestDispatcher;
@@ -41,6 +31,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpUpgradeHandler;
 import javax.servlet.http.Part;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.security.Principal;
+import java.util.Collection;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.ResourceBundle;
 
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.request.RequestDispatcherOptions;
@@ -68,10 +68,10 @@ public class MockSlingHttpServletRequest implements SlingHttpServletRequest {
 
     private final String queryString;
 
-	private final String scheme;
-	private final String server;
-	private final int port;
-	private final String contextPath;
+    private final String scheme;
+    private final String server;
+    private final int port;
+    private final String contextPath;
 
     private boolean secure = false;
 
@@ -85,35 +85,39 @@ public class MockSlingHttpServletRequest implements SlingHttpServletRequest {
         this(null, null, null, null, null);
     }
 
-    public MockSlingHttpServletRequest(String resourcePath, String selectors,
-            String extension, String suffix, String queryString) {
-		this(resourcePath, selectors, extension, suffix, queryString,
-			resourcePath, null, null, 0, null);
+    public MockSlingHttpServletRequest(
+            String resourcePath, String selectors, String extension, String suffix, String queryString) {
+        this(resourcePath, selectors, extension, suffix, queryString, resourcePath, null, null, 0, null);
     }
 
-	public MockSlingHttpServletRequest(String resourcePath, String selectors,
-			String extension, String suffix, String queryString,
-			String requestPath, String scheme, String server, int port,
-			String contextPath) {
-		this.resource = new SyntheticResource(null, resourcePath, RESOURCE_TYPE);
-		this.requestPathInfo = new MockRequestPathInfo(selectors, extension,
-			suffix, requestPath);
-		this.queryString = queryString;
-		this.scheme = scheme;
-		this.server = server;
-		this.port = port;
-		this.contextPath = contextPath;
+    public MockSlingHttpServletRequest(
+            String resourcePath,
+            String selectors,
+            String extension,
+            String suffix,
+            String queryString,
+            String requestPath,
+            String scheme,
+            String server,
+            int port,
+            String contextPath) {
+        this.resource = new SyntheticResource(null, resourcePath, RESOURCE_TYPE);
+        this.requestPathInfo = new MockRequestPathInfo(selectors, extension, suffix, requestPath);
+        this.queryString = queryString;
+        this.scheme = scheme;
+        this.server = server;
+        this.port = port;
+        this.contextPath = contextPath;
 
-		setMethod(null);
-	}
+        setMethod(null);
+    }
 
     public void setResourceResolver(ResourceResolver resolver) {
         this.mockResourceResolver = resolver;
 
         // recreate request resource with the new resolver
         if (resource.getResourceResolver() == null) {
-            this.resource = new SyntheticResource(resolver, resource.getPath(),
-                resource.getResourceType());
+            this.resource = new SyntheticResource(resolver, resource.getPath(), resource.getResourceType());
         }
     }
 
@@ -135,14 +139,12 @@ public class MockSlingHttpServletRequest implements SlingHttpServletRequest {
     }
 
     @Override
-    public RequestDispatcher getRequestDispatcher(String path,
-            RequestDispatcherOptions options) {
+    public RequestDispatcher getRequestDispatcher(String path, RequestDispatcherOptions options) {
         return null;
     }
 
     @Override
-    public RequestDispatcher getRequestDispatcher(Resource resource,
-            RequestDispatcherOptions options) {
+    public RequestDispatcher getRequestDispatcher(Resource resource, RequestDispatcherOptions options) {
         return null;
     }
 
@@ -214,10 +216,10 @@ public class MockSlingHttpServletRequest implements SlingHttpServletRequest {
         return null;
     }
 
-	@Override
+    @Override
     public String getContextPath() {
-		return contextPath;
-	}
+        return contextPath;
+    }
 
     @Override
     public Cookie[] getCookies() {
@@ -469,19 +471,13 @@ public class MockSlingHttpServletRequest implements SlingHttpServletRequest {
     }
 
     @Override
-    public void removeAttribute(String name) {
-
-    }
+    public void removeAttribute(String name) {}
 
     @Override
-    public void setAttribute(String name, Object o) {
-
-    }
+    public void setAttribute(String name, Object o) {}
 
     @Override
-    public void setCharacterEncoding(String env) {
-
-    }
+    public void setCharacterEncoding(String env) {}
 
     @Override
     public <AdapterType> AdapterType adaptTo(Class<AdapterType> type) {

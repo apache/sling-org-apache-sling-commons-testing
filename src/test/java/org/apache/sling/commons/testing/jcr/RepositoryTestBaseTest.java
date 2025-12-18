@@ -22,7 +22,7 @@ import javax.jcr.Node;
 
 /** Test the RepositoryTestBase */
 public class RepositoryTestBaseTest extends RepositoryTestBase {
-    
+
     public void testTestNode() throws Exception {
         final Node n = getTestRootNode();
         assertNotNull("Expecting to get a test Node", n);

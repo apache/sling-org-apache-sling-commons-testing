@@ -18,38 +18,36 @@
  */
 package org.apache.sling.commons.testing.sling;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.SyntheticResource;
 import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.api.wrappers.ValueMapDecorator;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class MockResource extends SyntheticResource {
 
     private String resourceType;
     private String resourceSuperType;
-    private Map<String,Object> properties = new HashMap<String,Object>();
+    private Map<String, Object> properties = new HashMap<String, Object>();
 
-    public MockResource(ResourceResolver resourceResolver, String path,
-            String resourceType) {
+    public MockResource(ResourceResolver resourceResolver, String path, String resourceType) {
         this(resourceResolver, path, resourceType, null);
     }
 
-    public MockResource(ResourceResolver resourceResolver, String path,
-            String resourceType, String resourceSuperType) {
+    public MockResource(ResourceResolver resourceResolver, String path, String resourceType, String resourceSuperType) {
         super(resourceResolver, path, resourceType);
 
         setResourceType(resourceType);
         setResourceSuperType(resourceSuperType);
     }
 
-    public void addProperty(String key, Object value){
-        this.properties.put(key,value);
+    public void addProperty(String key, Object value) {
+        this.properties.put(key, value);
     }
 
-    public Map<String,Object> getProperties(){
+    public Map<String, Object> getProperties() {
         return this.properties;
     }
 
@@ -82,7 +80,7 @@ public class MockResource extends SyntheticResource {
                 map.put("resourceSuperType", resourceSuperType);
             }
             for (String key : this.properties.keySet()) {
-                map.put(key,this.properties.get(key));
+                map.put(key, this.properties.get(key));
             }
             return (AdapterType) map;
         }

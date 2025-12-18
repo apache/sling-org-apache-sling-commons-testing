@@ -18,12 +18,12 @@
  */
 package org.apache.sling.commons.testing.osgi;
 
+import javax.servlet.Servlet;
+
 import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
-
-import javax.servlet.Servlet;
 
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
@@ -63,7 +63,6 @@ public class MockComponentContext implements ComponentContext {
         services.put(reference, service);
     }
 
-
     public void setProperty(Object key, Object value) {
         // noinspection unchecked
         this.properties.put(key.toString(), value);
@@ -92,12 +91,10 @@ public class MockComponentContext implements ComponentContext {
     }
 
     @Override
-    public void disableComponent(String name) {
-    }
+    public void disableComponent(String name) {}
 
     @Override
-    public void enableComponent(String name) {
-    }
+    public void enableComponent(String name) {}
 
     @Override
     public ComponentInstance getComponentInstance() {

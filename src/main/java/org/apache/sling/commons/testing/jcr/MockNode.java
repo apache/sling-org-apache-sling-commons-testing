@@ -18,14 +18,6 @@
  */
 package org.apache.sling.commons.testing.jcr;
 
-import java.io.InputStream;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import javax.jcr.Binary;
 import javax.jcr.InvalidLifecycleTransitionException;
 import javax.jcr.Item;
@@ -49,13 +41,21 @@ import javax.jcr.version.Version;
 import javax.jcr.version.VersionException;
 import javax.jcr.version.VersionHistory;
 
+import java.io.InputStream;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.jackrabbit.util.ChildrenCollectorFilter;
 
 // simple mock implementation of a node
 public class MockNode implements Node {
 
     private String path;
-    private Map <String, Property> properties = new HashMap <String, Property>();
+    private Map<String, Property> properties = new HashMap<String, Property>();
 
     private NodeType nodeType;
     private Session session;
@@ -110,8 +110,7 @@ public class MockNode implements Node {
         return "MockNode: path=" + getPath();
     }
 
-    public void addMixin(String mixinName) {
-    }
+    public void addMixin(String mixinName) {}
 
     public Node addNode(String relPath) {
         return null;
@@ -125,19 +124,15 @@ public class MockNode implements Node {
         return false;
     }
 
-    public void cancelMerge(Version version) {
-
-    }
+    public void cancelMerge(Version version) {}
 
     public Version checkin() {
         return null;
     }
 
-    public void checkout() {
-    }
+    public void checkout() {}
 
-    public void doneMerge(Version version) {
-    }
+    public void doneMerge(Version version) {}
 
     public Version getBaseVersion() {
         return null;
@@ -254,81 +249,93 @@ public class MockNode implements Node {
         return null;
     }
 
-    public void orderBefore(String srcChildRelPath, String destChildRelPath) {
-    }
+    public void orderBefore(String srcChildRelPath, String destChildRelPath) {}
 
-    public void removeMixin(String mixinName) {
-    }
+    public void removeMixin(String mixinName) {}
 
-    public void restore(String versionName, boolean removeExisting) {
-    }
+    public void restore(String versionName, boolean removeExisting) {}
 
-    public void restore(Version version, boolean removeExisting) {
-    }
+    public void restore(Version version, boolean removeExisting) {}
 
-    public void restore(Version version, String relPath, boolean removeExisting) {
-    }
+    public void restore(Version version, String relPath, boolean removeExisting) {}
 
-    public void restoreByLabel(String versionLabel, boolean removeExisting) {
-    }
+    public void restoreByLabel(String versionLabel, boolean removeExisting) {}
 
-    public Property setProperty(String name, Value value) throws ValueFormatException, VersionException, LockException, ConstraintViolationException, RepositoryException {
+    public Property setProperty(String name, Value value)
+            throws ValueFormatException, VersionException, LockException, ConstraintViolationException,
+                    RepositoryException {
         MockProperty p = new MockProperty(name);
         p.setValue(value);
         properties.put(name, p);
         return p;
     }
 
-    public Property setProperty(String name, Value[] values) throws ValueFormatException, VersionException, LockException, ConstraintViolationException, RepositoryException {
+    public Property setProperty(String name, Value[] values)
+            throws ValueFormatException, VersionException, LockException, ConstraintViolationException,
+                    RepositoryException {
         MockProperty p = new MockProperty(name);
         p.setValue(values);
         properties.put(name, p);
         return p;
     }
 
-    public Property setProperty(String name, String[] values) throws ValueFormatException, VersionException, LockException, ConstraintViolationException, RepositoryException {
+    public Property setProperty(String name, String[] values)
+            throws ValueFormatException, VersionException, LockException, ConstraintViolationException,
+                    RepositoryException {
         MockProperty p = new MockProperty(name);
         p.setValue(values);
         properties.put(name, p);
         return p;
     }
 
-    public Property setProperty(String name, String value) throws ValueFormatException, VersionException, LockException, ConstraintViolationException, RepositoryException {
+    public Property setProperty(String name, String value)
+            throws ValueFormatException, VersionException, LockException, ConstraintViolationException,
+                    RepositoryException {
         MockProperty p = new MockProperty(name);
         p.setValue(value);
         properties.put(name, p);
         return p;
     }
 
-    public Property setProperty(String name, InputStream value) throws ValueFormatException, VersionException, LockException, ConstraintViolationException, RepositoryException {
+    public Property setProperty(String name, InputStream value)
+            throws ValueFormatException, VersionException, LockException, ConstraintViolationException,
+                    RepositoryException {
         MockProperty p = new MockProperty(name);
         p.setValue(value);
         properties.put(name, p);
         return p;
     }
 
-    public Property setProperty(String name, boolean value) throws ValueFormatException, VersionException, LockException, ConstraintViolationException, RepositoryException {
+    public Property setProperty(String name, boolean value)
+            throws ValueFormatException, VersionException, LockException, ConstraintViolationException,
+                    RepositoryException {
         MockProperty p = new MockProperty(name);
         p.setValue(value);
         properties.put(name, p);
         return p;
     }
 
-    public Property setProperty(String name, double value) throws ValueFormatException, VersionException, LockException, ConstraintViolationException, RepositoryException {
+    public Property setProperty(String name, double value)
+            throws ValueFormatException, VersionException, LockException, ConstraintViolationException,
+                    RepositoryException {
         MockProperty p = new MockProperty(name);
         p.setValue(value);
         properties.put(name, p);
         return p;
     }
 
-    public Property setProperty(String name, long value) throws ValueFormatException, VersionException, LockException, ConstraintViolationException, RepositoryException {
+    public Property setProperty(String name, long value)
+            throws ValueFormatException, VersionException, LockException, ConstraintViolationException,
+                    RepositoryException {
         MockProperty p = new MockProperty(name);
         p.setValue(value);
         properties.put(name, p);
         return p;
     }
 
-    public Property setProperty(String name, Calendar value) throws ValueFormatException, VersionException, LockException, ConstraintViolationException, RepositoryException {
+    public Property setProperty(String name, Calendar value)
+            throws ValueFormatException, VersionException, LockException, ConstraintViolationException,
+                    RepositoryException {
         MockProperty p = new MockProperty(name);
         p.setValue(value);
         properties.put(name, p);
@@ -355,14 +362,11 @@ public class MockNode implements Node {
         return null;
     }
 
-    public void unlock() {
-    }
+    public void unlock() {}
 
-    public void update(String srcWorkspaceName) {
-    }
+    public void update(String srcWorkspaceName) {}
 
-    public void accept(ItemVisitor visitor) {
-    }
+    public void accept(ItemVisitor visitor) {}
 
     public Item getAncestor(int depth) {
         return null;
@@ -377,7 +381,7 @@ public class MockNode implements Node {
     }
 
     public void setSession(Session session) {
-      this.session = session;
+        this.session = session;
     }
 
     public boolean isModified() {
@@ -392,20 +396,16 @@ public class MockNode implements Node {
         return true;
     }
 
-    public void refresh(boolean keepChanges) {
-    }
+    public void refresh(boolean keepChanges) {}
 
-    public void remove() {
-    }
+    public void remove() {}
 
-    public void save() {
-    }
+    public void save() {}
 
     // JCR 2.0 methods
 
     public void followLifecycleTransition(String transition)
-            throws UnsupportedRepositoryOperationException,
-            InvalidLifecycleTransitionException, RepositoryException {
+            throws UnsupportedRepositoryOperationException, InvalidLifecycleTransitionException, RepositoryException {
         // TODO Auto-generated method stub
 
     }
@@ -426,14 +426,12 @@ public class MockNode implements Node {
         return null;
     }
 
-    public PropertyIterator getProperties(String[] nameGlobs)
-            throws RepositoryException {
+    public PropertyIterator getProperties(String[] nameGlobs) throws RepositoryException {
         // TODO Auto-generated method stub
         return null;
     }
 
-    public PropertyIterator getReferences(String name)
-            throws RepositoryException {
+    public PropertyIterator getReferences(String name) throws RepositoryException {
         // TODO Auto-generated method stub
         return null;
     }
@@ -448,41 +446,40 @@ public class MockNode implements Node {
         return null;
     }
 
-    public PropertyIterator getWeakReferences(String name)
-            throws RepositoryException {
+    public PropertyIterator getWeakReferences(String name) throws RepositoryException {
         // TODO Auto-generated method stub
         return null;
     }
 
-    public void removeShare() throws VersionException, LockException,
-            ConstraintViolationException, RepositoryException {
+    public void removeShare()
+            throws VersionException, LockException, ConstraintViolationException, RepositoryException {
         // TODO Auto-generated method stub
 
     }
 
-    public void removeSharedSet() throws VersionException, LockException,
-            ConstraintViolationException, RepositoryException {
+    public void removeSharedSet()
+            throws VersionException, LockException, ConstraintViolationException, RepositoryException {
         // TODO Auto-generated method stub
 
     }
 
     public void setPrimaryType(String nodeTypeName)
-            throws NoSuchNodeTypeException, VersionException,
-            ConstraintViolationException, LockException, RepositoryException {
+            throws NoSuchNodeTypeException, VersionException, ConstraintViolationException, LockException,
+                    RepositoryException {
         // TODO Auto-generated method stub
 
     }
 
     public Property setProperty(String name, BigDecimal value)
-            throws ValueFormatException, VersionException, LockException,
-            ConstraintViolationException, RepositoryException {
+            throws ValueFormatException, VersionException, LockException, ConstraintViolationException,
+                    RepositoryException {
         // TODO Auto-generated method stub
         return null;
     }
 
     public Property setProperty(String name, Binary value)
-            throws ValueFormatException, VersionException, LockException,
-            ConstraintViolationException, RepositoryException {
+            throws ValueFormatException, VersionException, LockException, ConstraintViolationException,
+                    RepositoryException {
         // TODO Auto-generated method stub
         return null;
     }
