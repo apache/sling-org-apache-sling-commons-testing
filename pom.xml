@@ -43,7 +43,7 @@
 
     <properties>
         <sling.java.version>11</sling.java.version>
-        <derby.version>10.16.1.1</derby.version>
+        <derby.version>10.17.1.0</derby.version>
         <project.build.outputTimestamp>1743171324</project.build.outputTimestamp>
     </properties>
 
