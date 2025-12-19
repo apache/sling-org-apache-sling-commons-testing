@@ -43,6 +43,7 @@
 
     <properties>
         <sling.java.version>11</sling.java.version>
+        <derby.version>10.16.1.1</derby.version>
         <project.build.outputTimestamp>1743171324</project.build.outputTimestamp>
     </properties>
 
@@ -173,19 +174,19 @@
         <dependency>
             <groupId>org.apache.derby</groupId>
             <artifactId>derby</artifactId>
-            <version>10.17.1.0</version>
+            <version>${derby.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.derby</groupId>
             <artifactId>derbyshared</artifactId>
-            <version>10.17.1.0</version>
+            <version>${derby.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.derby</groupId>
             <artifactId>derbytools</artifactId>
-            <version>10.17.1.0</version>
+            <version>${derby.version}</version>
             <scope>test</scope>
         </dependency>
 
